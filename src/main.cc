@@ -118,19 +118,24 @@ int main()
     glViewport(0, 0, 800, 600);
     while(!glfwWindowShouldClose(window))
     {
-     
+        // process the events in window 
         processInput(window);
+        //clearing the render buffer
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        //bind and uses the shader program
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
+        //draw the simple triangle
         glDrawArrays(GL_TRIANGLES, 0, 3);
+        // swapping the buffer
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);  
+    glDeleteProgram(shaderProgram);
     glfwTerminate();
     return 0;
 }
