@@ -11,21 +11,16 @@ A Simple OpenGL Toy Repo
 install the necessary package using pacman:
 
 ~~~
-
 sudo pacman -S base-devel git python bazel 
-
 ~~~
 
 then enter command:
 
 ~~~
-
-
 git clone https://github.com/Itsr1ght/glass.git
 cd glass
 bazel build //:glass
-bazel run //:glass
-
+bazel run //:glass.
 ~~~
 
 
@@ -38,10 +33,8 @@ bazel run //:glass
 5) Clone this repository and perform an initial build:
 
 ~~~
-
 git clone https://github.com/Itsr1ght/glass.git
 cd glass
 bazel build //:glass
 bazel run //:glass
-
 ~~~
