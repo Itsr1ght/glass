@@ -4,7 +4,32 @@ A Simple OpenGL Toy Repo
 
 ## Quick Start
 
-<h3><u>Windows</u></h3>
+<h3>Linux</h3>
+
+<h4>Arch Based Distribution</h4>
+
+install the necessary package using pacman:
+
+~~~
+
+sudo pacman -S base-devel git python bazel 
+
+~~~
+
+then enter command:
+
+~~~
+
+
+git clone https://github.com/Itsr1ght/glass.git
+cd glass
+bazel build //:glass
+bazel run //:glass
+
+~~~
+
+
+<h3>Windows</h3>
 
 1) Make sure [bazelisk](https://github.com/bazelbuild/bazelisk/releases) is installed and in your path (hint: name the binary bazel.exe). You may also need to install [Microsoft's C++ redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist) as well.
 2) Make sure [git for windows](https://gitforwindows.org/) is installed and in your path.
@@ -16,7 +41,7 @@ A Simple OpenGL Toy Repo
 
 git clone https://github.com/Itsr1ght/glass.git
 cd glass
-bazel build //src:glass
-bazel run //src:glass
+bazel build //:glass
+bazel run //:glass
 
 ~~~
