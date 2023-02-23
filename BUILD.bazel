@@ -1,0 +1,4 @@
+alias(
+    name = "glass",
+    actual = "@//src:glass",
+)
