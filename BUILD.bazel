@@ -2,3 +2,8 @@ alias(
     name = "glass",
     actual = "@//src:glass",
 )
+
+filegroup(
+    name = "resources",
+    srcs = ["res/"],
+)
