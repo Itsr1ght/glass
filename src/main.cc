@@ -18,9 +18,15 @@ int main()
     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
     
     float vertices[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left 
+    };
+
+    unsigned int indices[] = {  // note that we start from 0!
+    0, 1, 3,   // first triangle
+    1, 2, 3    // second triangle
     };
 
 
@@ -79,7 +85,7 @@ int main()
             "out vec4 FragColor;\n"
             "void main()\n"
             "{\n"
-            "FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+            "FragColor = vec4(0.7f, 0.0f, 0.5f, 1.0f);\n"
             "}\0"; 
 
     unsigned int fragmentShader;
@@ -115,6 +121,16 @@ int main()
     glEnableVertexAttribArray(0);      
     glUseProgram(shaderProgram);
 
+
+    unsigned int EBO;
+    glGenBuffers(1, &EBO);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+
+
+
     glViewport(0, 0, 800, 600);
     while(!glfwWindowShouldClose(window))
     {
@@ -126,8 +142,9 @@ int main()
         //bind and uses the shader program
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        //draw the simple triangle
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+        //draw a rectangle
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         // swapping the buffer
         glfwSwapBuffers(window);
         glfwPollEvents();
