@@ -70,7 +70,6 @@ int main()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3* sizeof(float)));
     glEnableVertexAttribArray(1);
 
-
     unsigned int EBO;
     glGenBuffers(1, &EBO);
 

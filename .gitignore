@@ -38,3 +38,6 @@
 /.ijwb/
 /.aswb/
 /.clwb/
+
+#Other files
+compile_flags.txt
