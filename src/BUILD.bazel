@@ -7,4 +7,5 @@ cc_binary(
         "@//third_party/glfw",
         "@//third_party/glad",
     ],
+    data = ["@//res"]
 )

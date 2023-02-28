@@ -1,18 +1,6 @@
+
 alias(
     name = "glass",
     actual = "@//src:glass",
 )
 
-filegroup(
-    name = "resources",
-    srcs = ["res"],
-)
-
-genrule(
-    name = "copy_resources",
-    srcs = ["//some/package:resources"],
-    outs = [ ],
-    cmd = "cp $(SRCS) $(@D)",
-    local = 1,
-    output_to_bindir = 1,
-)

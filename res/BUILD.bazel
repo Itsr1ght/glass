@@ -1,0 +1,6 @@
+
+filegroup(
+  name = "res",
+  srcs = glob(["**/*"]),
+  visibility = ["//visibility:public"],
+)

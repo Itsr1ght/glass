@@ -27,3 +27,4 @@ http_archive(
     strip_prefix = "glad-0.1.36/glad/",
     build_file = "@//third_party/glad:glad.BUILD",
 )
+
