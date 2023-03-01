@@ -6,6 +6,7 @@ cc_binary(
     deps = [
         "@//third_party/glfw",
         "@//third_party/glad",
+        "@//third_party/stb",
     ],
     data = ["@//res"]
 )

@@ -28,3 +28,11 @@ http_archive(
     build_file = "@//third_party/glad:glad.BUILD",
 )
 
+
+#======== STB IMAGES ======
+new_git_repository(
+        name = "stb",
+        remote = "https://github.com/jiaobao/stb_image",
+        branch = "master",
+        build_file = "@//third_party/stb:stb.BUILD",
+)
