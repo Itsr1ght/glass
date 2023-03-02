@@ -2,6 +2,8 @@
 
 A Simple OpenGL Toy Repo
 
+The project followed on [learnopengl](https://learnopengl.com)
+
 ## Quick Start
 
 <h3>Linux</h3>
