@@ -2,7 +2,7 @@
 
 A Simple OpenGL Toy Repo
 
-The project followed on [learnopengl](https://learnopengl.com)
+The project based on [learnopengl](https://learnopengl.com)
 
 ## Quick Start
 
