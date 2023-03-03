@@ -15,10 +15,24 @@
 
 #include "shader.h"
 
-void processInput(GLFWwindow *window)
+
+glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
+
+void processInput(GLFWwindow *window,  glm::vec3 &cameraPos, glm::vec3 &cameraFront, glm::vec3 cameraUp)
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    const float cameraSpeed = 0.05f; // adjust accordingly
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= cameraSpeed * cameraFront;
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 }
 
 int main()
@@ -125,6 +139,20 @@ int main()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+
+
+    //camera codes
+    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);  
+    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::vec3 cameraDirection = glm::normalize(cameraPos - cameraTarget);
+    //camera right axis
+    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f); 
+    glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
+    //camera up axis
+    glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
+
+
+
     //how many vertex attribute are supported
     int nrAttributes;
     glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
@@ -153,8 +181,6 @@ int main()
     glViewport(0, 0, 800, 600);
     while(!glfwWindowShouldClose(window))
     {
-        // process the events in window 
-        processInput(window);
         //clearing the render buffer
         glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
         glEnable(GL_DEPTH_TEST);
@@ -167,9 +193,19 @@ int main()
         glm::mat4 model         = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
         glm::mat4 view          = glm::mat4(1.0f);
         glm::mat4 projection    = glm::mat4(1.0f);
+
+        const float radius = 10.0f;
+        float camX = sin(glfwGetTime()) * radius;
+        float camZ = cos(glfwGetTime()) * radius;
+        view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0)); 
+
         model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.5f, 1.0f, 0.0f));
         view  = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
         projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
+
+        view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+
         // retrieve the matrix uniform locations
         unsigned int modelLoc = glGetUniformLocation(shader.ID, "model");
         unsigned int viewLoc  = glGetUniformLocation(shader.ID, "view");
@@ -177,6 +213,8 @@ int main()
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
         glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
         // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+        // process the events in window 
+        processInput(window, cameraPos, cameraFront, cameraUp);
         shader.setMat4("projection", projection);
         glBindTexture(GL_TEXTURE_2D, texture);
         glBindVertexArray(VAO);
