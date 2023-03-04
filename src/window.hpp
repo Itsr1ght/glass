@@ -16,9 +16,9 @@ public:
         Window(Size size, std::string title);
         ~Window();
         void setSize(Size size) const;
-        Size getSize();
+        Size getSize() const;
         void setTitle(std::string title) const;
-        std::string getTitle();
+        std::string getTitle() const;
 private:
         Size m_size;
         std::string m_title;

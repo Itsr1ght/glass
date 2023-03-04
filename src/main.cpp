@@ -13,7 +13,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "shader.h"
+#include "shader.hpp"
 
 
 glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f,  3.0f);
