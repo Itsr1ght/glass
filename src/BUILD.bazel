@@ -2,7 +2,7 @@ package(default_visibility = ["//visibility:public"])
 
 cc_binary(
     name = "glass",
-    srcs = glob(include=["**/*.h","**/*.cc"]),
+    srcs = glob(include=["**/*.h","**/*.cpp"]),
     deps = [
         "@//third_party/glfw",
         "@//third_party/glad",
