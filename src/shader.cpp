@@ -6,6 +6,8 @@
 #include <fstream>
 #include <sstream>
 
+namespace Glass {
+
 Shader::Shader(const char* vertex_path, const char* fragment_path){
     std::string vertexCode;
     std::string fragmentCode;
@@ -107,4 +109,6 @@ void Shader::setFloat(const std::string &name, float value) const{
 
 void Shader::setMat4(const std::string &name, glm::mat4 value) const{
         glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+}
+
 }

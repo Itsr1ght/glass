@@ -1,9 +1,13 @@
 #ifndef SHADER
 #define SHADER
+
 #include <string>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+namespace Glass {
+
 class Shader{
 public:
         unsigned int ID;
@@ -15,5 +19,7 @@ public:
         void setFloat(const std::string &name, float value) const;
         void setMat4(const std::string &name, glm::mat4 value) const;
 };       
+
+}
 
 #endif 

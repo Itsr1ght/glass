@@ -2,8 +2,10 @@
 #define WINDOW
 
 #include <string>
+#include <glad.h>
+#include <GLFW/glfw3.h>
 
-using namespace std;
+namespace Glass {
 
 struct Size {
         int width;
@@ -15,14 +17,22 @@ class Window{
 public:
         Window(Size size, std::string title);
         ~Window();
-        void setSize(Size size) const;
+	void ClearColor();
+	void SwapBuffer();
+	bool IsWindowShouldClose();
+        void setSize(Size size);
         Size getSize() const;
-        void setTitle(std::string title) const;
+        void setTitle(std::string title);
         std::string getTitle() const;
 private:
         Size m_size;
         std::string m_title;
-
+        GLFWwindow* m_window;
+	void CreateWindow();
+	void ChangeSize();
+	void ChangeTitle();
 };
+
+}
 
 #endif
