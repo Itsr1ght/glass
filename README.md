@@ -29,9 +29,10 @@ bazel run //:glass.
 <h3>Windows</h3>
 
 1) Make sure [git for windows](https://gitforwindows.org/) is installed and in your path.
-2) Make sure [python](https://www.python.org/) is installed in your system
-3) Make sure [bazel buildifier](https://github.com/bazelbuild/buildtools/releases) is installed in your path if you plan to use the vscode bazel extension.
-4) Clone this repository and perform an initial build:
+2) Make sure [MSYS](https://www.msys2.org/) is installed and add the msys2 bin directory to your environment variable( because for generating glad source we need to use bash )
+3) Make sure [python](https://www.python.org/) is installed in your system
+4) Make sure [bazel buildifier](https://github.com/bazelbuild/buildtools/releases) is installed in your path if you plan to use the vscode bazel extension.
+5) Clone this repository and perform an initial build:
 
 ~~~
 git clone https://github.com/Itsr1ght/glass.git
