@@ -16,7 +16,7 @@ http_archive(
 new_git_repository(
     name = "glfw",
     remote = "https://github.com/glfw/glfw.git",
-    commit = "8d7e5cdb49a1a5247df612157ecffdd8e68923d2",
+    tag = "3.3.8",
     build_file = "@//third_party/glfw:glfw.BUILD",
 )
 
@@ -31,16 +31,16 @@ http_archive(
 
 #======== STB IMAGES ======
 new_git_repository(
-        name = "stb",
-        remote = "https://github.com/jiaobao/stb_image",
-        branch = "master",
-        build_file = "@//third_party/stb:stb.BUILD",
+    name = "stb",
+    remote = "https://github.com/jiaobao/stb_image",
+    branch = "master",
+    build_file = "@//third_party/stb:stb.BUILD",
 )
 
 #====== GLM ===========
 new_git_repository(
     name = "glm",
     remote = "https://github.com/g-truc/glm.git",
-    branch = "master",
+    tag = "0.9.9.8",
     build_file = "@//third_party/glm:glm.BUILD",
 )
