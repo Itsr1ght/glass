@@ -5,6 +5,5 @@ cc_library(
     "glm/**/*.hpp",
   ]),
   includes = ["glm"],
-  textual_hdrs = glob(["glm/**/*.inl"]),
   visibility = ["//visibility:public"],
 )

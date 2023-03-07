@@ -13,7 +13,7 @@ The project based on [learnopengl](https://learnopengl.com)
 install the necessary package using pacman:
 
 ~~~
-sudo pacman -S base-devel git python bazel 
+sudo pacman -S base-devel git python bazel glm
 ~~~
 
 then enter command:

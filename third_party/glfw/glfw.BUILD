@@ -47,7 +47,7 @@ LINUX_SRCS = [
     "src/x11_window.c",
 ]
 
-LINUX_LINKOPTS = ["-lGL", "-lGLU", "-lX11" ]
+LINUX_LINKOPTS = ["-lGL", "-lX11" ]
 
 cc_library(
     name = "glfw_src",
