@@ -12,10 +12,15 @@ namespace Glass {
         int height;
     };
 
+    struct WindowProps {
+        Size size;
+        std::string title;
+    };
+
     class Window{
 
         public:
-            Window(Size size, std::string title);
+            Window(WindowProps props);
             ~Window();
             void ClearColor();
             void SwapBuffer();
@@ -25,8 +30,7 @@ namespace Glass {
             void setTitle(std::string title);
             std::string getTitle() const;
         private:
-            Size m_size;
-            std::string m_title;
+            WindowProps m_props;
             GLFWwindow* m_window;
             void CreateWindow();
             void ChangeSize();

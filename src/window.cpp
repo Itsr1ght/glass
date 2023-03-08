@@ -6,8 +6,8 @@
 
 namespace Glass {
 
-    Window::Window(Size size, std::string title)
-        :m_size(size), m_title(title)
+    Window::Window(WindowProps props)
+        :m_props(props)
     {
         this->CreateWindow();
     }
@@ -28,21 +28,21 @@ namespace Glass {
     }
 
     void Window::setSize(Size size){
-        this->m_size = size;
+        this->m_props.size = size;
         this->ChangeSize();
     }
 
     Size Window::getSize() const{
-        return this->m_size;
+        return this->m_props.size;
     }
 
     void Window::setTitle(std::string title){
-        this->m_title = title;
+        this->m_props.title = title;
         this->ChangeTitle();
     }
 
     std::string Window::getTitle() const{
-        return this->m_title;
+        return this->m_props.title;
     }
 
     void Window::CreateWindow(){
@@ -51,8 +51,8 @@ namespace Glass {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         this->m_window = glfwCreateWindow(
-                        this->m_size.width,
-                        this->m_size.height,
+                        this->m_props.size.width,
+                        this->m_props.size.height,
                         this->m_title.c_str(),
                         NULL,
                         NULL
