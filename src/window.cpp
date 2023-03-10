@@ -53,7 +53,7 @@ namespace Glass {
         this->m_window = glfwCreateWindow(
                         this->m_props.size.width,
                         this->m_props.size.height,
-                        this->m_title.c_str(),
+                        this->m_props.title.c_str(),
                         NULL,
                         NULL
                         );

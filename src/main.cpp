@@ -25,7 +25,7 @@ glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
 
 int main()
 {
-    Window window({800, 600}, "Hello World");    
+    Window window({{800, 600}, "Hello World"});    
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
          0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
