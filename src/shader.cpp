@@ -9,34 +9,8 @@
 namespace Glass {
 
     Shader::Shader(const char* vertex_path, const char* fragment_path){
-        std::string vertexCode;
-        std::string fragmentCode;
-        std::ifstream vShaderFile;
-        std::ifstream fShaderFile;
-        // ensure ifstream objects can throw exceptions:
-        vShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-        fShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-        try 
-        {
-            // open files
-            vShaderFile.open(vertex_path);
-            fShaderFile.open(fragment_path);
-            std::stringstream vShaderStream, fShaderStream;
-            // read file's buffer contents into streams
-            vShaderStream << vShaderFile.rdbuf();
-            fShaderStream << fShaderFile.rdbuf();		
-            // close file handlers
-            vShaderFile.close();
-            fShaderFile.close();
-            // convert stream into string
-            vertexCode   = vShaderStream.str();
-            fragmentCode = fShaderStream.str();		
-        }
-        catch(std::ifstream::failure &e)
-        {
-            std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-        }
-
+        std::string vertexCode = this->load_file(vertex_path);
+        std::string fragmentCode = this -> load_file(fragment_path);
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
 
@@ -85,11 +59,26 @@ namespace Glass {
         glDeleteShader(fragment);
     };
 
+    Shader::Shader(std::string file_path){
+
+    }
+
     Shader::~Shader(){
         if (ID)
             glDeleteProgram(ID);
     }
 
+    std::string Shader::load_file(std::string file_path){
+
+        std::string source_data;
+        std::ifstream shader_file(file_path);
+        std::stringstream stream_data;
+        stream_data << shader_file.rdbuf();
+        source_data = stream_data.str();
+        shader_file.close();
+        std::cout << "The Shader code is :" << source_data << std::endl;
+        return source_data;
+    }
 
     void Shader::use(){
        glUseProgram(ID);
