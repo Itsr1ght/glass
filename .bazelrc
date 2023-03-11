@@ -1,1 +1,2 @@
 --cxxopt='-std=c++11'
+build --enable_runfiles

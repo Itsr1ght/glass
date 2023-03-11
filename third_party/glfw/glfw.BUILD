@@ -58,7 +58,7 @@ cc_library(
         "src/internal.h",
         "src/osmesa_context.h",
         "src/mappings.h",
-        "src/xkb_unicode.h",
+        #"src/xkb_unicode.h",
     ] + select({
 		"@bazel_tools//src/conditions:windows": WIN32_HDRS,
 		"@bazel_tools//src/conditions:linux_x86_64": LINUX_HDRS,
@@ -72,7 +72,7 @@ cc_library(
         "src/monitor.c",
         "src/vulkan.c",
         "src/window.c",
-        "src/xkb_unicode.c",
+        #"src/xkb_unicode.c",
     ] + select({
 		"@bazel_tools//src/conditions:windows": WIN32_SRCS,
 		"@bazel_tools//src/conditions:linux_x86_64": LINUX_SRCS,

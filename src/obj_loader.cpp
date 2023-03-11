@@ -4,7 +4,7 @@
 /* Needs to Implement */
 namespace Glass {
 
-    ObjLoader::ObjLoader()
+    ObjLoader::ObjLoader(std::string file_path)
     {
 
     }
