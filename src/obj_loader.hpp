@@ -1,22 +1,33 @@
 #ifndef OBJLOADER
 #define OBJLOADER
 
-#include <glm/fwd.hpp>
 #include <vector>
+#include <string>
 
 namespace Glass {
 
+    struct vec2 {
+        float x;
+        float y;
+    };
+
+    struct vec3 {
+        float x;
+        float y;
+        float z;
+    };
+
     struct Obj{
-        std::vector<glm::vec3> vertices;
-        std::vector<glm::vec2> textures;
-        std::vector<glm::vec3> normals;
+        std::vector<vec3> vertices;
+        std::vector<vec2> textures;
+        std::vector<vec3> normals;
         std::vector<int> indices;
     };
 
     class ObjLoader{
 
         public:
-            ObjLoader();
+            ObjLoader(std::string file_path);
             ~ObjLoader();
 
         private:
