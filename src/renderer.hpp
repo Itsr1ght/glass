@@ -1,7 +1,9 @@
 #ifndef RENDERER
 #define RENDERER
 
+#include "raw_model.hpp"
 #include "window.hpp"
+#include <vector>
 
 namespace Glass {
 
@@ -13,6 +15,7 @@ namespace Glass {
             void render();
         private:
             Window m_window;
+            std::vector<RawModel> m_models;
             void initiate_renderer();
     };
 
