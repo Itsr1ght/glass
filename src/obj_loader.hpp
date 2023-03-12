@@ -28,10 +28,12 @@ namespace Glass {
 
         public:
             ObjLoader(std::string file_path);
+
             ~ObjLoader();
 
         private:
             Obj m_obj;
+            std::string load_file(std::string file_path);
     };
 
 }
