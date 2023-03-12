@@ -1,16 +1,17 @@
 #include "shader.hpp"
 #include "glad.h"
+#include "utils.hpp"
 
 #include <string>
 #include <iostream>
-#include <fstream>
-#include <sstream>
+
 
 namespace Glass {
 
     Shader::Shader(const char* vertex_path, const char* fragment_path){
-        std::string vertexCode = this->load_file(vertex_path);
-        std::string fragmentCode = this -> load_file(fragment_path);
+        Utils utils;
+        std::string vertexCode = utils.load_file(vertex_path);
+        std::string fragmentCode = utils.load_file(fragment_path);
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
 
@@ -66,18 +67,6 @@ namespace Glass {
     Shader::~Shader(){
         if (ID)
             glDeleteProgram(ID);
-    }
-
-    std::string Shader::load_file(std::string file_path){
-
-        std::string source_data;
-        std::ifstream shader_file(file_path);
-        std::stringstream stream_data;
-        stream_data << shader_file.rdbuf();
-        source_data = stream_data.str();
-        shader_file.close();
-        std::cout << "The Shader code is :" << source_data << std::endl;
-        return source_data;
     }
 
     void Shader::use(){
