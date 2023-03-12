@@ -1,6 +1,8 @@
 package(default_visibility = ["//visibility:public"])
 
-alias(
-    name = "stb",
-    actual = "@stb",
+cc_library(
+        name = "stb",
+        srcs = ["stb/stb_image.h"],
+        includes = ["stb"],
+        visibility = ["//visibility:public"],
 )
