@@ -5,7 +5,10 @@ namespace Glass {
 
     class Vao{
         public:
-            Vao();
+            Vao() = default;
+            void bind();
+            void unbind();
+            unsigned int get_id();
             ~Vao();
         private:
             unsigned int m_vao;
