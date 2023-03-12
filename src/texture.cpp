@@ -9,9 +9,17 @@ namespace Glass {
         this->load_texture(file_path); 
     }
 
+    TextureProps Texture::get_texture_property(){
+        return this->tex_props;
+    }
+
     void Texture::load_texture(std::string file_path){
-        this->texture_data = stbi_load(file_path.c_str(), &tex_props.width, &tex_props.height, &tex_props.nrchannel, 0);
-    
+        this->texture_data = stbi_load(file_path.c_str(),
+                &tex_props.width,
+                &tex_props.height,
+                &tex_props.nrchannel,
+                0
+                );
         glGenTextures(1, &m_texture);  
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, m_texture);
