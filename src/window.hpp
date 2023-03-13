@@ -16,7 +16,6 @@ namespace Glass {
         Size size;
         std::string title;
     };
-
     class Window{
 
         public:
@@ -28,6 +27,7 @@ namespace Glass {
             void setSize(Size size);
             Size getSize() const;
             void setTitle(std::string title);
+
             std::string getTitle() const;
         private:
             WindowProps m_props;

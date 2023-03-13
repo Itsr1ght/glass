@@ -64,11 +64,6 @@ namespace Glass {
             std::exit(-1);
         }
         glfwMakeContextCurrent(this->m_window);
-        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-        {
-            std::cout << "Failed to initialize GLAD" << std::endl;
-            std::exit(-1);
-        }
 
     }
 

@@ -12,6 +12,7 @@ namespace Glass {
         public:
             Renderer(Window &window);
             ~Renderer();
+            void add_to_renderer(RawModel model);
             void render();
         private:
             Window m_window;
