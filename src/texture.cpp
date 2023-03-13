@@ -1,5 +1,5 @@
 #include "texture.hpp"
-#include "stb_image.h"
+#include <stb/stb_image.h>
 #include <glad.h>
 #include <iostream>
 
