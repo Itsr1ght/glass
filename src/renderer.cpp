@@ -1,4 +1,5 @@
 #include "renderer.hpp"
+#include "raw_model.hpp"
 #include <iostream>
 #include <glad.h>
 #include <GLFW/glfw3.h>
@@ -16,6 +17,9 @@ namespace Glass {
     }
 
     void Renderer::render(){
+        for (RawModel models : this->m_models){
+            models.bind();
+        }
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
 
