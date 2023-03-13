@@ -2,7 +2,7 @@ workspace(name = "glass")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
-
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 #======= Python ======
 http_archive(
@@ -36,3 +36,12 @@ new_git_repository(
     tag = "0.9.9.8",
     build_file = "@//third_party/glm:glm.BUILD",
 )
+
+#====== STB ==========
+git_repository(
+    name = "stb",
+    init_submodules = True,
+    branch = "master",
+    remote = "https://github.com/nitronoid/rules_stb"
+)
+
