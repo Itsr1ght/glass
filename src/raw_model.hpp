@@ -11,13 +11,13 @@ namespace Glass {
     class RawModel{
 
         public:
-            RawModel(float vertices[], int indices[]);
+            RawModel(float vertices[], unsigned int indices[]);
             Vao get_id(); 
             ~RawModel();
         private:
             Vao m_vao;
-            Vbo vbo;
-            Ebo ebo;
+            Vbo m_vbo;
+            Ebo m_ebo;
     };
 
 }

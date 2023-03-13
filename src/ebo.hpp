@@ -5,7 +5,9 @@ namespace Glass {
 
     class Ebo{
         public:
-            Ebo();
+            Ebo() = default;
+            void bind(unsigned int indices[]);
+            void unbind();
             ~Ebo();
         private:
             unsigned int m_ebo;

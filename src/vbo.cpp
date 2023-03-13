@@ -6,12 +6,11 @@
 /* needs to impliment */
 namespace Glass {
 
-    void Vbo::bind(std::vector<int> vertices){
+    void Vbo::bind(float vertices[]){
         glGenBuffers(1, &m_vbo);
         //bind to array buffer
         glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
         //add the vertices to vbo
-        std::copy(vertices.begin(), vertices.end(), m_vertices);
         glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices), m_vertices, GL_STATIC_DRAW);
     }
 
