@@ -4,8 +4,7 @@
 /* needs to impliment */
 namespace Glass {
 
-    Ebo::Ebo(unsigned int *indices)
-    {
+    void Ebo::init(unsigned int *indices){
         glGenBuffers(1, &m_ebo);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
         glBufferData(
