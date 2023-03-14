@@ -12,15 +12,18 @@ namespace Glass {
 
         public:
             RawModel(float vertices[], unsigned int indices[]);
+            Vbo get_vbo();
             void bind();
-            Vao get_id(); 
-            ~RawModel();
+            void unbind();
         private:
+            //variables
             float *m_vertices;
             unsigned int *m_indices;
-            Vao m_vao;
             Vbo m_vbo;
             Ebo m_ebo;
+            //functions
+            void initizialise_model(float* vertices, unsigned int *indices);
+
     };
 
 }

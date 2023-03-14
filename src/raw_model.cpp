@@ -1,30 +1,32 @@
 #include "raw_model.hpp"
 
-
 namespace Glass {
 
     RawModel::RawModel(float vertices[], unsigned int indices[])
         :m_vertices(vertices), m_indices(indices)
     {
-       this->m_vao.bind();
-       this->m_vbo.bind(vertices);
-       this->m_ebo.bind(indices);
+        this->initizialise_model(vertices, indices);
+    }
+    
+    void RawModel::initizialise_model(float* vertices, unsigned int *indices){
+
+        this->m_vbo.init(vertices);
+        this->m_ebo.init(indices);
+
+    }
+
+    Vbo RawModel::get_vbo(){
+        return this->m_vbo;
     }
 
     void RawModel::bind(){
-        this->m_vao.bind();
-        this->m_vbo.bind(m_vertices);
-        this->m_ebo.bind(m_indices);
+        this->m_vbo.bind();
+        this->m_ebo.bind();
     }
     
-    Vao RawModel::get_id(){
-        return m_vao;
-    }
-
-    RawModel::~RawModel(){
-        this->m_ebo.unbind();
+    void RawModel::unbind(){
         this->m_vbo.unbind();
-        this->m_vao.unbind();
+        this->m_ebo.unbind();
     }
 
 }
