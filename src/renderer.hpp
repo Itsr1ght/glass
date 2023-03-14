@@ -2,6 +2,7 @@
 #define RENDERER
 
 #include "raw_model.hpp"
+#include "vao.hpp"
 #include "window.hpp"
 #include <vector>
 
@@ -16,6 +17,7 @@ namespace Glass {
             void render();
         private:
             Window m_window;
+            Vao m_vao;
             std::vector<RawModel> m_models;
             void initiate_renderer();
     };

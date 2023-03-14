@@ -17,10 +17,16 @@ namespace Glass {
     }
 
     void Renderer::render(){
-        for (RawModel models : this->m_models){
-            models.bind();
+        for (RawModel model : this->m_models){
+            m_vao.link_vbo(model.get_vbo(), 0); 
+            m_vao.bind();
+            model.bind();
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+            model.unbind();
+            m_vao.unbind();
+
         }
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+
     }
 
     void Renderer::initiate_renderer(){
