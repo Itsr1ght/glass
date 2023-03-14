@@ -9,7 +9,7 @@ namespace Glass {
         this->load_texture(file_path); 
     }
 
-    TextureProps Texture::get_texture_property(){
+    TextureProps Texture::GetTextureProperty(){
         return this->tex_props;
     }
 

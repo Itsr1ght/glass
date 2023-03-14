@@ -14,7 +14,7 @@ namespace Glass {
     class Texture{
         public:
             Texture(std::string file_path);
-            TextureProps get_texture_property();
+            TextureProps GetTextureProperty();
             ~Texture();
         private:
             unsigned char* texture_data;
