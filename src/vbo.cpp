@@ -6,7 +6,7 @@
 /* needs to impliment */
 namespace Glass {
 
-    Vbo::Vbo(float *vertices){
+    void Vbo::init(float *vertices){
         glGenBuffers(1, &m_vbo);
         //bind to array buffer
         glBindBuffer(GL_ARRAY_BUFFER, m_vbo);

@@ -7,7 +7,8 @@ namespace Glass {
 
     class Vbo{
         public:
-            Vbo(float *vertices);
+            Vbo() = default ;
+            void init (float *vertices);
             void bind();
             void unbind();
             ~Vbo();
