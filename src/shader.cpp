@@ -9,9 +9,8 @@
 namespace Glass {
 
     Shader::Shader(const char* vertex_path, const char* fragment_path){
-        Utils utils;
-        std::string vertexCode = utils.load_file(vertex_path);
-        std::string fragmentCode = utils.load_file(fragment_path);
+        std::string vertexCode = Utils::load_file(vertex_path);
+        std::string fragmentCode = Utils::load_file(fragment_path);
         const char* vShaderCode = vertexCode.c_str();
         const char* fShaderCode = fragmentCode.c_str();
 
