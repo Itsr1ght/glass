@@ -1,6 +1,7 @@
 #ifndef VAO
 #define VAO
 
+#include "vbo.hpp"
 namespace Glass {
 
     class Vao{
@@ -8,7 +9,7 @@ namespace Glass {
             Vao() = default;
             void bind();
             void unbind();
-            unsigned int get_id();
+            void link_vbo(Vbo vbo, unsigned int layout);
             ~Vao();
         private:
             unsigned int m_vao;
