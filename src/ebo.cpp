@@ -9,10 +9,11 @@ namespace Glass {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
         glBufferData(
                 GL_ELEMENT_ARRAY_BUFFER,
-                sizeof(&indices),
+                sizeof(indices),
                 indices,
                 GL_STATIC_DRAW
                 );
+        m_indices = indices;
     }
 
     void Ebo::bind(){

@@ -11,7 +11,12 @@ namespace Glass {
         //bind to array buffer
         glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
         //add the vertices to vbo
-        glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertices), m_vertices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER,
+                sizeof(vertices),
+                vertices,
+                GL_STATIC_DRAW
+                );
+        m_vertices = vertices;
     }
 
     void Vbo::bind(){

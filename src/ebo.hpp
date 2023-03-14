@@ -12,6 +12,7 @@ namespace Glass {
             ~Ebo();
         private:
             unsigned int m_ebo;
+            unsigned int *m_indices;
     };
 
 }

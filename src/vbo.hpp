@@ -13,7 +13,7 @@ namespace Glass {
             void unbind();
             ~Vbo();
         private:
-            int * m_vertices;
+            float * m_vertices;
             unsigned int m_vbo;
     };
 
