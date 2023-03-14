@@ -75,8 +75,7 @@ int main()
         1, 2, 3    // second triangle
     };
 
-    RawModel model(vertices, indices);
-    renderer.add_to_renderer(model);
+
 
     //camera codes
     glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);  
@@ -88,10 +87,11 @@ int main()
     //camera up axis
     glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 
-
     Texture texture("./res/texture/container.jpg");
 
     Shader shader("./res/shaders/vertex_shader.glsl", "./res/shaders/fragment_shader.glsl");
+    RawModel model(vertices, indices, shader);
+    renderer.add_to_renderer(model);
 
     glViewport(0, 0, 800, 600);
     while(!window.IsWindowShouldClose())
@@ -113,8 +113,6 @@ int main()
         projection = glm::perspective(glm::radians(45.0f), (float)800 / (float)600, 0.1f, 100.0f);
 
         view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
-
         // retrieve the matrix uniform locations
         unsigned int modelLoc = glGetUniformLocation(shader.ID, "model");
         unsigned int viewLoc  = glGetUniformLocation(shader.ID, "view");
