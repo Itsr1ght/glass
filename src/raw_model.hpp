@@ -2,7 +2,7 @@
 #define RAWMODEL
 
 #include "ebo.hpp"
-#include "vao.hpp"
+#include "shader.hpp"
 #include "vbo.hpp"
 #include <vector>
 
@@ -11,9 +11,10 @@ namespace Glass {
     class RawModel{
 
         public:
-            RawModel(float vertices[], unsigned int indices[]);
+            RawModel(float vertices[], unsigned int indices[], Shader &shader);
             Vbo get_vbo();
             void bind();
+            void use_shader();
             void unbind();
         private:
             //variables
@@ -21,6 +22,7 @@ namespace Glass {
             unsigned int *m_indices;
             Vbo m_vbo;
             Ebo m_ebo;
+            Shader m_shader;
             //functions
             void initizialise_model(float* vertices, unsigned int *indices);
 

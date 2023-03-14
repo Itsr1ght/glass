@@ -20,13 +20,10 @@ namespace Glass {
         for (RawModel model : this->m_models){
             m_vao.link_vbo(model.get_vbo(), 0); 
             m_vao.bind();
-            model.bind();
+            model.use_shader();
             glDrawArrays(GL_TRIANGLES, 0, 36);
-            model.unbind();
             m_vao.unbind();
-
         }
-
     }
 
     void Renderer::initiate_renderer(){
